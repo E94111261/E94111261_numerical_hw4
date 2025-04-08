@@ -2,6 +2,8 @@ import numpy as np
 from scipy.integrate import quad
 from numpy.polynomial.legendre import leggauss
 
+np.set_printoptions(precision=16, suppress=False)
+
 # ========== 題目 1 ==========
 f1 = lambda x: np.exp(x) * np.sin(4 * x)
 a1, b1, h1 = 1, 2, 0.1
@@ -35,9 +37,9 @@ result1b = simpsons(f1, x1, h1)
 result1c = midpoint(f1, x1, h1)
 
 print("========== 題目 1 ==========")
-print(f"1.a Trapezoidal Rule: {result1a:.8f}")
-print(f"1.b Simpson’s Method: {result1b:.8f}")
-print(f"1.c Midpoint Rule: {result1c:.8f}")
+print(f"1.a Trapezoidal Rule: {result1a:.16f}")
+print(f"1.b Simpson’s Method: {result1b:.16f}")
+print(f"1.c Midpoint Rule: {result1c:.16f}")
 
 # ========== 題目 2 ==========
 f2 = lambda x: x**2 * np.log(x)
@@ -53,9 +55,9 @@ gauss_n3 = gauss_quad(f2, a2, b2, 3)
 gauss_n4 = gauss_quad(f2, a2, b2, 4)
 
 print("\n========== 題目 2 ==========")
-print(f"2. Gaussian n=3 : {gauss_n3:.8f}")
-print(f"2. Gaussian n=4 : {gauss_n4:.8f}")
-print(f"2. Exact Value  : {exact2:.8f}")
+print(f"2. Gaussian n=3 : {gauss_n3:.16f}")
+print(f"2. Gaussian n=4 : {gauss_n4:.16f}")
+print(f"2. Exact Value  : {exact2:.16f}")
 print(f"2. Error n=3    : {abs(gauss_n3 - exact2):.2e}")
 print(f"2. Error n=4    : {abs(gauss_n4 - exact2):.2e}")
 
@@ -102,9 +104,9 @@ gauss3 = gauss_double(f3, 0, np.pi/4, 3, 3)
 exact3, _ = quad(lambda x: quad(lambda y: f3(x, y), np.sin(x), np.cos(x))[0], 0, np.pi / 4)
 
 print("\n========== 題目 3 ==========")
-print(f"3.a Simpson 2D (n=4, m=4): {simpson3:.8f}")
-print(f"3.b Gaussian 2D (n=3, m=3): {gauss3:.8f}")
-print(f"3.c Exact Value            : {exact3:.8f}")
+print(f"3.a Simpson 2D (n=4, m=4): {simpson3:.16f}")
+print(f"3.b Gaussian 2D (n=3, m=3): {gauss3:.16f}")
+print(f"3.c Exact Value            : {exact3:.16f}")
 print(f"3.c Simpson Error          : {abs(simpson3 - exact3):.2e}")
 print(f"3.c Gauss Error            : {abs(gauss3 - exact3):.2e}")
 
@@ -140,5 +142,5 @@ result4a = composite_simpson_q4(f_a, 0, 1, n_q4)
 result4b = composite_simpson_q4(f_b_transformed, 0, 1, n_q4)
 
 print("\n========== 題目 4 ==========")
-print(f"4.a Improper Simpson x^(-1/4): {result4a:.8f}")
-print(f"4.b Improper Simpson (∞→1 by t=1/x): {result4b:.8f}")
+print(f"4.a Improper Simpson x^(-1/4): {result4a:.16f}")
+print(f"4.b Improper Simpson (∞→1 by t=1/x): {result4b:.16f}")
