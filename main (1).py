@@ -138,7 +138,7 @@ def f_b_transformed(t):
     return t**2 * np.sin(1/t)
 
 n_q4 = 4
-result4a = composite_simpson_q4(f_a, 0, 1, n_q4)
+result4a = composite_simpson_q4(f_a, 1e-6, 1, n_q4)  # 修正區間避免 x=0
 result4b = composite_simpson_q4(f_b_transformed, 0, 1, n_q4)
 
 print("\n========== 題目 4 ==========")
